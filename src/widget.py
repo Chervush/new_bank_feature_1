@@ -22,6 +22,7 @@ def mask_account_card(acc_card_number: str) -> str:
 
 
 def get_date(date: str) -> str:
+    """приводит строку с датой к формату 'ДД.ММ.ГГГГ'"""
     formatted_date = date[8:10] + '.' + date[5:7] + '.' + date[:4]
     return formatted_date
 
