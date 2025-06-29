@@ -2,12 +2,17 @@ import re
 
 
 def mask_account_card(acc_card_number: str) -> str:
+    """Принимает название карты или счета и его номер и возвращает то же самое,
+    но с маскированным номером"""
+
     just_numbers = re.sub(r"[^0-9]", '', acc_card_number)
     just_words = re.sub(r"[0-9 ]", '', acc_card_number)
     if len(just_numbers) == 16:
         masked_number = just_numbers[:4] + " " + just_numbers[4:6] + "** **** " + just_numbers[-4:]
-    if len(just_numbers) == 20:
+    elif len(just_numbers) == 20:
         masked_number = "**" + just_numbers[-4:]
+    else:
+        return 'Это не номер карты или счета.'
 
 
     masked_all = just_words + ' ' + masked_number
