@@ -21,6 +21,13 @@ def mask_account_card(acc_card_number: str) -> str:
     return masked_all
 
 
+def get_date(date: str) -> str:
+    formatted_date = date[8:10] + '.' + date[5:7] + '.' + date[:4]
+    return formatted_date
+
+
+#date = "2024-03-11T02:26:18.671407"
+#print(get_date(date))
 #card_acc = 'Maestro 1596837868705199'
 #print(mask_account_card(card_acc))
 

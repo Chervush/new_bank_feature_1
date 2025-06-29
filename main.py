@@ -1,4 +1,5 @@
-from src.widget import mask_account_card
+from src.widget import mask_account_card, get_date
+
 
 cards_accs_list = [
 'Maestro 1596837868705199',
@@ -11,6 +12,10 @@ cards_accs_list = [
 'Счет 73654108430135874305',
 ]
 
+date = "2024-03-11T02:26:18.671407"
+
 
 for card_acc in cards_accs_list:
     print(mask_account_card(card_acc))
+
+print(get_date(date))
