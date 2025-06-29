@@ -17,3 +17,5 @@ for card_acc in cards_accs_list:
     print(mask_account_card(card_acc))
 
 print(get_date(date))
+
+#проверка подключения github
