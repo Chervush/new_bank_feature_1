@@ -8,7 +8,7 @@ def mask_account_card(acc_card_number: str) -> str:
     но с маскированным номером"""
 
     just_numbers = re.sub(r"[^0-9]", "", acc_card_number)
-    just_words = re.sub(r"[0-9 ]", "", acc_card_number)
+    just_words = re.sub(r"[0-9]", "", acc_card_number)
     if len(just_numbers) == 16:
         masked_number = get_mask_card_number(just_numbers)
     elif len(just_numbers) == 20:
@@ -16,7 +16,7 @@ def mask_account_card(acc_card_number: str) -> str:
     else:
         return "Это не номер карты или счета."
 
-    masked_all = just_words + " " + masked_number
+    masked_all = just_words + masked_number
     return masked_all
 
 
