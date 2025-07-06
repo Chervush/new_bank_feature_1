@@ -20,5 +20,12 @@ def filter_by_state(list_of_dates: list, state = 'EXECUTED') -> list:
     return filtered
 
 
+def sort_by_date(list_of_dates: list, reversed = True):
+    '''Функция принимает список словарей и необязательный параметр, задающий порядок сортировки (по умолчанию — убывание).
+    Функция возвращает новый список словарей, отсортированный по дате'''
+    sorted_list = sorted(list_of_dates, key=lambda entry: (entry['date'])[-6:], reverse=reversed)
+
+    return sorted_list
+
 
 
