@@ -1,6 +1,4 @@
 #тестовый словарь для проверки
-import sorted_list
-
 list_of_dates = [
     {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
     {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
@@ -26,6 +24,11 @@ def sort_by_date(list_of_dates: list, reversed = True):
     sorted_list = sorted(list_of_dates, key=lambda entry: (entry['date'])[-6:], reverse=reversed)
 
     return sorted_list
+
+
+#Проверка работы функций
+print(filter_by_state(list_of_dates))
+print(sort_by_date(list_of_dates))
 
 
 
