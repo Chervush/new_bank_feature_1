@@ -1,4 +1,4 @@
-#тестовый словарь для проверки
+# тестовый словарь для проверки
 list_of_dates = [
     {'id': 41428829, 'state': 'EXECUTED', 'date': '2019-07-03T18:35:29.512364'},
     {'id': 939719570, 'state': 'EXECUTED', 'date': '2018-06-30T02:08:58.425572'},
@@ -7,10 +7,12 @@ list_of_dates = [
 ]
 
 
+def filter_by_state(list_of_dates: list, state: str = 'EXECUTED') -> list:
 
-def filter_by_state(list_of_dates: list, state = 'EXECUTED') -> list:
-    '''Функция принимает список словарей и возвращает новый список словарей, содержащий только те словари, у которых ключ state
- соответствует указанному значению.'''
+    '''Функция принимает список словарей и возвращает новый список словарей, содержащий только те словари,
+    у которых ключ state
+    соответствует указанному значению.'''
+
     filtered = []
     for entry in list_of_dates:
         if entry.get('state') == state:
@@ -18,17 +20,16 @@ def filter_by_state(list_of_dates: list, state = 'EXECUTED') -> list:
     return filtered
 
 
-def sort_by_date(list_of_dates: list, reversed = True):
-    '''Функция принимает список словарей и необязательный параметр, задающий порядок сортировки (по умолчанию — убывание).
+def sort_by_date(list_of_dates: list, reversed: bool = True) -> list:
+    ''''Функция принимает список словарей и необязательный параметр, задающий порядок сортировки
+    (по умолчанию — убывание).
     Функция возвращает новый список словарей, отсортированный по дате'''
-    sorted_list = sorted(list_of_dates, key=lambda entry: (entry['date'])[-6:], reverse=reversed)
 
+    sorted_list = sorted(list_of_dates, key=lambda entry: (entry['date'])[-6:], reverse=reversed)
     return sorted_list
 
+# Проверка работы функций
 
-#Проверка работы функций
+
 print(filter_by_state(list_of_dates))
 print(sort_by_date(list_of_dates))
-
-
-
