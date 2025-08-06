@@ -13,3 +13,7 @@ def get_mask_account(account_number: Union[str]) -> str:
 
     masked_number = "**" + account_number[-4:]
     return masked_number
+
+
+
+print(get_mask_card_number('1596837868705199'))
