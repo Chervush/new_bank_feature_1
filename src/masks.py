@@ -1,19 +1,29 @@
 from typing import Union
+import re
 
 
 def get_mask_card_number(card_number: Union[str]) -> str:
     """Функция маскировки номера банковской карты"""
 
-    masked_number = card_number[:4] + " " + card_number[4:6] + "** **** " + card_number[-4:]
+    card_number_no_spaces = re.sub(" ", "", card_number)
+
+    if len(card_number_no_spaces) < 16 or not card_number_no_spaces.isalnum():
+        raise ValueError('Это не номер карты')
+
+    masked_number: str = card_number_no_spaces[:4] + " " + card_number_no_spaces[4:6] + "** **** " + card_number_no_spaces[-4:]
+
     return masked_number
 
 
 def get_mask_account(account_number: Union[str]) -> str:
     """Функция маскировки номера банковского счета"""
 
-    masked_number = "**" + account_number[-4:]
+    account_number_no_spaces = re.sub(" ", "", account_number)
+
+    if len(account_number_no_spaces) < 20 or not account_number_no_spaces.isalnum():
+        raise ValueError('Это не номер счета')
+
+    masked_number = "**" + account_number_no_spaces[-4:]
+
     return masked_number
 
-
-
-print(get_mask_card_number('1596837868705199'))
