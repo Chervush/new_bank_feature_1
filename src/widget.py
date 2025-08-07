@@ -6,17 +6,25 @@ from src.masks import get_mask_account, get_mask_card_number
 def mask_account_card(acc_card_number: str) -> str:
     """Принимает название карты или счета и его номер и возвращает то же самое,
     но с маскированным номером"""
+    acc_card_number_no_spaces = re.sub(" ", "", acc_card_number)
+    just_numbers = re.sub(r"[^0-9]", "", acc_card_number_no_spaces)
+    just_words = re.sub(r"[0-9]", "", acc_card_number_no_spaces)
 
-    just_numbers = re.sub(r"[^0-9]", "", acc_card_number)
-    just_words = re.sub(r"[0-9]", "", acc_card_number)
+
     if len(just_numbers) == 16:
         masked_number = get_mask_card_number(just_numbers)
     elif len(just_numbers) == 20:
         masked_number = get_mask_account(just_numbers)
     else:
         return "Это не номер карты или счета."
-
-    masked_all = just_words + masked_number
+    if 'visa' in just_words.lower():
+        just_words_visa_space = just_words[:4] + ' ' + just_words[4:]
+        masked_all = just_words_visa_space.title() + ' ' + masked_number
+    elif 'mastercard' in just_words.lower():
+        just_words_mastercard = 'MasterCard'
+        masked_all = just_words_mastercard + ' ' + masked_number
+    else:
+        masked_all = just_words + ' ' + masked_number
     return masked_all
 
 
