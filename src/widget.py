@@ -18,14 +18,14 @@ def mask_account_card(acc_card_number: str) -> str:
         masked_number = get_mask_account(just_numbers)
     else:
         raise ValueError("Это не номер карты или счета.")
-    if 'visa' in just_words.lower():
-        just_words_visa_space = just_words[:4] + ' ' + just_words[4:]
-        masked_all = just_words_visa_space.title() + ' ' + masked_number
-    elif 'mastercard' in just_words.lower():
-        just_words_mastercard = 'MasterCard'
-        masked_all = just_words_mastercard + ' ' + masked_number
+    if "visa" in just_words.lower():
+        just_words_visa_space = just_words[:4] + " " + just_words[4:]
+        masked_all = just_words_visa_space.title() + " " + masked_number
+    elif "mastercard" in just_words.lower():
+        just_words_mastercard = "MasterCard"
+        masked_all = just_words_mastercard + " " + masked_number
     else:
-        masked_all = just_words + ' ' + masked_number
+        masked_all = just_words + " " + masked_number
     return masked_all
 
 
@@ -43,9 +43,4 @@ def get_date(date: str) -> str:
         dt = datetime.fromisoformat(date)
         return dt.strftime("%d.%m.%Y")
     else:
-        raise ValueError('Неправильный формат даты')
-
-
-
-
-
+        raise ValueError("Неправильный формат даты")
