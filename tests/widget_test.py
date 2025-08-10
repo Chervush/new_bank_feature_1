@@ -37,7 +37,7 @@ def test_mask_account_card_wrong_number(wrong_number):
 def test_get_date(date, expected):
     assert get_date(date) == expected
 
-# не понимаю, почему тест не ловит ошибку, помогите
+
 def test_get_date_wrong_data(wrong_number):
     with pytest.raises(ValueError):
         get_date(wrong_number)

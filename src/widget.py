@@ -29,19 +29,21 @@ def mask_account_card(acc_card_number: str) -> str:
     return masked_all
 
 
-date_ = '2025-08-10T15:433dsafsdaf5:30'
-
-
-# Не понимаю, почему программа выдает ошибку, хотя в других фунциях выдает текст ошибки. Помогите
-def get_date(date_: str) -> str:
-    """Приводит строку с датой к формату 'ДД.ММ.ГГГГ'"""
+def is_valid_date(date_str: str) -> bool:
     try:
-        dt = datetime.fromisoformat(date_)
-        return dt.strftime("%d.%m.%Y")
+        datetime.fromisoformat(date_str)
+        return True
     except ValueError:
-        raise ValueError(f"Не удалось распознать дату: {date_}")
+        return False
 
-print(get_date(date_))
+
+def get_date(date: str) -> str:
+    """Приводит строку с датой к формату 'ДД.ММ.ГГГГ'"""
+    if is_valid_date(date):
+        dt = datetime.fromisoformat(date)
+        return dt.strftime("%d.%m.%Y")
+    else:
+        raise ValueError('Неправильный формат даты')
 
 
 
