@@ -14,10 +14,6 @@ def test_get_mask_card_number(card_number, expected):
     assert get_mask_card_number(card_number) == expected
 
 
-@pytest.fixture
-def wrong_number():
-    return '993002!_hey_man'
-
 #тест для функции get_mask_card_number с неправильными входными данными
 def test_get_mask_card_number_wrong_number(wrong_number):
     with pytest.raises(ValueError):
